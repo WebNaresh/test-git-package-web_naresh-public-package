@@ -19,5 +19,8 @@ jobs:
 
       - run: npm install
       - run: npm publish
+      - run: |
+          npm version patch -m "Upgrade to %s"
+          git push --follow-tags
         env:
           NODE_AUTH_TOKEN: ${{secrets.PAT_GITHUB}}
