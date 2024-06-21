@@ -16,7 +16,7 @@ jobs:
           node-version: 16
           registry-url: https://npm.pkg.github.com/
           scope: "@WebNaresh"
-      - run: npm ci
+      - run: npm install
       - run: npm publish
 
       # Output the npm logs if the publish step fails
