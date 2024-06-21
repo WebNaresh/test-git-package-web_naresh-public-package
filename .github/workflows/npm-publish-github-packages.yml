@@ -14,15 +14,10 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: 16
-
-      # Temporarily print the token for testing purposes
-      - run: echo ${{ secrets.NPM_TOKEN }}
-
+          registry-url: https://npm.pkg.github.com/
+          scope: "@WebNaresh"
       - run: npm ci
       - run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        continue-on-error: true
 
       # Output the npm logs if the publish step fails
       - run: cat /home/runner/.npm/_logs/*.log
