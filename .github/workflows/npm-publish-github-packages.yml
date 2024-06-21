@@ -11,16 +11,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
+      - name: Log PAT_GITHUB secret
+        run: echo ${{ secrets.PAT_GITHUB }}
+
       - uses: actions/setup-node@v2
         with:
           node-version: 16
           registry-url: https://npm.pkg.github.com/
-          scope: "@webnaresh"
-
+          scope: "@WebNaresh"
       - run: npm install
       - run: npm publish
-      - run: |
-          npm version patch -m "Upgrade to %s"
-          git push --follow-tags
+
         env:
           NODE_AUTH_TOKEN: ${{secrets.PAT_GITHUB}}
