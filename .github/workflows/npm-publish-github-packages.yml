@@ -16,8 +16,8 @@ jobs:
           node-version: 16
           registry-url: https://npm.pkg.github.com/
           scope: "@WebNaresh"
-      - run: echo "//npm.pkg.github.com/:_authToken=${{secrets.GITHUB_TOKEN}}" > ~/.npmrc
+      - run: echo "//npm.pkg.github.com/:_authToken=${{secrets.PAT_GITHUB}}" > ~/.npmrc
       - run: npm install
       - run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          NODE_AUTH_TOKEN: ${{secrets.PAT_GITHUB}}
